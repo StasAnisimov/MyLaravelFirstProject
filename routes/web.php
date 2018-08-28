@@ -14,14 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'] ], function () {
-   Route::get('/', 'DashboardController@dashboard')->name('admin.index');
+
+
+Route::group(['middleware' => 'auth'] , function(){
+    Route::group(['middleware' => 'admin'], function () {
+        Route::get('/admin', 'Admin\DashboardController@dashboard')->name('admin');
+     });
 });
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('register/confirm/{token}', 'Auth\RegisterController@confirmEmail');

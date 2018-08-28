@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->boolean('verified')->default(false);
             $table->string('token')->nullable();
             $table->string('provider_id')->nullable();      //Store the provider's user id.
-  	        $table->enum('provider', ['facebook', 'twitter', 'google']); //Store the provider
+            $table->enum('provider', ['facebook', 'twitter', 'google']); //Store the provider
+            $table->boolean('isAdmin')->nullable();  
             $table->rememberToken();
             $table->timestamps();
         });
