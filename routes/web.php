@@ -19,8 +19,11 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'] , function(){
     Route::group(['middleware' => 'admin'], function () {
         Route::get('/admin', 'Admin\DashboardController@dashboard')->name('admin');
+
      });
 });
+
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -30,6 +33,9 @@ Route::get('register/confirm/{token}', 'Auth\RegisterController@confirmEmail');
 Route::get('/blog', function () {
     return view('site.blog');
 });
+
+
+Route::resource('/category','CategoryController',['middleware'=> 'admin']);
 Route::get('/buy', function () {
     return view('site.buy');
 });
