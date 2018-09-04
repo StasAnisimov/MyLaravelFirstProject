@@ -29,7 +29,7 @@
 <div class="row">
   <div class="col-sm-6"><a href="#">
       <h4 class="list-group-item-heading"></h4>
-      <a href="#"  class="btn btn-block btn-default">Создать категорию</a>
+      <a href="{{ route('admin.category.index')}}"  class="btn btn-block btn-default">Создать категорию</a>
       <p class="list-group-item-text"> категория</p>
     </a></div>
 
