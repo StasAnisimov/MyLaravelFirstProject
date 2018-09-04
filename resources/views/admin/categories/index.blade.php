@@ -34,7 +34,9 @@
       <td>{{$category->title}}</td>
       <td>{{$category->published}}</td>
       <td>
-      <a href="{{route('admin.category.edit', ['id' => $category->id] )}}"></a>
+      <a href="{{route('admin.category.edit',  $category )}}"class="btn btn-primary"><i class="fas fa-edit"></i>
+
+</a>
       </td>
   </tr>
 @empty
