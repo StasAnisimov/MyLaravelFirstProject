@@ -18,7 +18,7 @@
 
 @endcomponent
 
-<a href="{{route('admin.category.create')}}"class="btn btn-primary pull-left" style="text-align:right;"><i class="far fa-plus-square"></i> Создать категорию </a>
+<a href="{{route('admin.category.create')}}"class="btn btn-primary pull-left" style=""><i class="far fa-plus-square"></i> Создать категорию </a>
 <hr>
 <table class=""table table-striped>
     <thead>
