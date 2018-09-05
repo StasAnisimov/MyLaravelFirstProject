@@ -28,11 +28,23 @@
   <div class="header">
   <div class="logo">
     <img src="img/logo.jpg" alt="">
+    
   </div>
   <div class = "header">
+  <div class ="container">  
+  <ul class ="nav navbar-nav"style="text-align:left;">
+    <li class="dropdown">
+    <a href ="#" class = "dropdown-toggle" role="menu" data-toggle="dropdown" role="button" arria-expanded="false">Блог</a>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="{{route('admin.category.index')}}"  >Категории</a></li>
+      <li><a href="{{route('admin.article.index')}}" >Статьи</a></li>
+    </li>
+    </ul>
+    </ul>
+    </div>
+ 
     @if (Route::has('login'))
 <div class = "links">
-
             @guest
             <a href="{{ route('login') }}">
               <i class="fas fa-user-circle"></i>
@@ -105,5 +117,7 @@
         <div class ="content">
             @yield('content')
         </div>
+       <a href="">123</a>
+    
 </body>
 </html>
