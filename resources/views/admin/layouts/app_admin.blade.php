@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+   
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -25,11 +25,6 @@
 </head>
 <body background-image="{{ asset('/img/auth.jpg') }}">
   @section('header')
-  <div class="header">
-  <div class="logo">
-    <img src="img/logo.jpg" alt="">
-    
-  </div>
   <div class = "header">
   <div class ="container">  
   <ul class ="nav navbar-nav"style="text-align:left;">
@@ -41,6 +36,7 @@
     </li>
     </ul>
     </ul>
+    
     </div>
  
     @if (Route::has('login'))
@@ -53,12 +49,11 @@
                 <i class="fas fa-user-plus" aria-hidden="true"></i>
                 Регистрация</a>
             @else
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
-
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
@@ -118,6 +113,7 @@
             @yield('content')
         </div>
        <a href="">123</a>
-    
+       <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+       <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Article;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,7 @@ class ArticlesController extends Controller
     public function index()
     {
         return view('admin.articles.index', [
-            'articles' => Article::orderBy('created_at','desc')
+            'articles' => Article::orderBy('created_at','desc')->paginate(10)
             ]);
     }
 
@@ -27,7 +28,11 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.articles.create' , [
+            'article' => '',
+            'categories' => Category::with('children')->where('parent_id' , 0)->get(),
+            'delimeter' => ''
+        ]);
     }
 
     /**
@@ -38,7 +43,11 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $article = Article::create($request->all());
+       if($request->input()) :
+       $article->categories()->attach($request->input('categories'));
+       return redirect()->route('admin.article.index');
+    endif;
     }
 
     /**
@@ -60,7 +69,11 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view ('admin.articles.edit' , [
+           'article'=> $article,
+           'categories' =>Category::with('children')->where('parent_id',0)->get(),
+           'delimeter' => '' 
+        ]);
     }
 
     /**
@@ -72,7 +85,14 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $article->update($request->except('slug'));
+
+        $article->categories()->detach();
+        if($request->input()) :
+            $article->categories()->attach($request->input('categories'));
+            return redirect()->route('admin.article.index');
+         endif;
+         return redirect()->route('admin.article.index');
     }
 
     /**
@@ -83,6 +103,9 @@ class ArticlesController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->categories()->detach();
+        $article->delete();
+
+        return redirect()->route('admin.article.index');
     }
 }

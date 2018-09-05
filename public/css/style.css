@@ -4,7 +4,7 @@ header {
   padding: 0;
 }
 .header {
-height: 55px;
+height: 75px;
 background-color :orange;
 width: 100%;
 
@@ -17,6 +17,10 @@ width: 100%;
   color:rgba(0,0,0,0.8);
   background-size: contain;
   transition: 2s;
+}
+#navbarDropdown {
+  float: right;
+  margin-top:-55px;
 }
 .header a:hover {
   text-decoration: none;
