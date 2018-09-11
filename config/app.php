@@ -162,6 +162,8 @@ return [
         //Подключенные пакеты
         Laravel\Socialite\SocialiteServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
+        //Собственные сервис провайдеры
+        App\Providers\BlogServiceProvider::class,
 
 
     ],

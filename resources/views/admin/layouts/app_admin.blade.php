@@ -24,55 +24,8 @@
 
 </head>
 <body background-image="{{ asset('/img/auth.jpg') }}">
-  @section('header')
-  <div class = "header">
-  <div class ="container">  
-  <ul class ="nav navbar-nav"style="text-align:left;">
-    <li class="dropdown">
-    <a href ="#" class = "dropdown-toggle" role="menu" data-toggle="dropdown" role="button" arria-expanded="false">Блог</a>
-    <ul class="dropdown-menu" role="menu">
-      <li><a href="{{route('admin.category.index')}}"  >Категории</a></li>
-      <li><a href="{{route('admin.article.index')}}" >Статьи</a></li>
-    </li>
-    </ul>
-    </ul>
-    
-    </div>
- 
-    @if (Route::has('login'))
-<div class = "links">
-            @guest
-            <a href="{{ route('login') }}">
-              <i class="fas fa-user-circle"></i>
-              Вход</a>
-              <a href="{{ route('register') }}">
-                <i class="fas fa-user-plus" aria-hidden="true"></i>
-                Регистрация</a>
-            @else
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-            @endguest
-      </div>
-    @endif
-</div>
-</div>
-
-@endsection
-@yield('header')
+  
+@include('layouts.header')
         @section('menu')
         <nav class="main_menu">
           <ul>
@@ -113,7 +66,11 @@
             @yield('content')
         </div>
        <a href="">123</a>
-       <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+     
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
        <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>
