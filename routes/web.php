@@ -14,7 +14,8 @@
 Route::get('/', function () {
     return view('blog.home');
 });
-
+Route::get('/blog/category/{slug?}' , 'BlogController@category')->name('category');
+Route::get('/blog/article/{slug?}' , 'BlogController@article')->name('article');
 
 Route::group(['prefix' => 'admin' , 'namespace' => 'Admin' , 'middleware'=>['auth']] , function(){
     
@@ -30,9 +31,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('register/confirm/{token}', 'Auth\RegisterController@confirmEmail');
-Route::get('/blog', function () {
-    return view('site.blog');
-});
+
 
 
 
