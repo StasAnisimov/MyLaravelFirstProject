@@ -16,6 +16,7 @@
           <div class="col-lg-9">
                 <ul class="navbar navbar-expand-lg navbar- bg-orange" >
                 @include('layouts.top_menu',  ['categories'=>$categories])
+                
                 </ul>
                 </div>
             @guest

@@ -28,17 +28,27 @@
 </div>
 <div class = "container">
 <div class="row">
-  <div class="col-sm-6"><a href="#">
-      <h4 class="list-group-item-heading"></h4>
+  <div class="col-sm-6">
+      
       <a href="{{ route('admin.category.index')}}"  class="btn btn-block btn-default">Создать категорию</a>
-      <p class="list-group-item-text"> категория</p>
-    </a></div>
+      @foreach($categories as $category)
+      <a href="{{route('admin.category.edit', $category)}}" class="list-group-item">
+      <h4 class="list-group-item-heading">{{$category->title}}</h4>
+      <p class="list-group-item-text">{{$category->articles()->count()}}</p>
+    </a>
+@endforeach
+    </div>
 
-  <div class="col-sm-6"><a href="#">
-      <h4 class="list-group-item-heading"></h4>
+  <div class="col-sm-6">
+      
       <a href="#"  class="btn btn-block btn-default">Создать материал</a>
-      <p class="list-group-item-text">Материал</p>
-    </a></div>
+      @foreach($articles as $article)
+      <a href="{{route('admin.article.edit' , $article)}}" class="list-group-item">
+      <h4 class="list-group-item-heading">{{$article->title}}</h4>
+      <p class="list-group-item-text">{{$article->categories()->pluck('title')->implode(' ')}}</p>
+    </a>
+    @endforeach
+    </div>
     </div>
 </div>
 

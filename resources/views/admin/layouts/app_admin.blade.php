@@ -24,10 +24,44 @@
 
 </head>
 <body background-image="{{ asset('/img/auth.jpg') }}">
-  
-@include('layouts.header')
+  <div class="container">
+  <div class="row">
+<ul class="col-lg-9">
+                        <li class="admin-links">
+                          <a href="{{route('admin.index')}}">Панель состояния</a>
+                        </li>
+                        <li class="dropdown admin-links">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Блог</a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{route('admin.category.index')}}" >Категории</a></li>
+                            <li><a href="{{route('admin.article.index')}}" >Материалы</a></li>
+                          </ul>
+                          </ul>
+ <div class="col-lg-3">
+                <li class="nav-item dropdown" style="white-space: nowrap; list-style:none;" >
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    
+                </li>
+                </div>
+              </div>
+              </div>  
         @section('menu')
+      
         <nav class="main_menu">
+        
           <ul>
             <li><a href="{{ url('/') }}">
         <i class="fa fa-home" aria-hidden="true"></i>
